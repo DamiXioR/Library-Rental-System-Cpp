@@ -13,6 +13,9 @@ public:
 	bool isShelfEmpty() {
 		return shelf_.empty();
 	}
+	bool getBooksCount() {
+		return shelf_.size();
+	}
 };
 
 #endif

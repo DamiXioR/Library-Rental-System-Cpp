@@ -9,3 +9,9 @@ TEST(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){
 	
 	EXPECT_TRUE(shelf.isShelfEmpty());
 }
+
+TEST(TestShelf, MethodGetBooksCountShouldReturn0BooksWhenIsInitialized){
+	Shelf shelf;
+	
+	EXPECT_EQ(shelf.getBooksCount(), 0);
+}
