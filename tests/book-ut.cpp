@@ -2,11 +2,9 @@
 #include <gmock/gmock.h>
 
 #include "book.hpp"
-
 #include <string>
 
-
-TEST(TestBook, ShouldReturnBookSpecifiers){
+TEST(TestBook, GettersShouldReturnsBooksAuthorTitleKindDate){
 	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
 
 	EXPECT_EQ(lordOfTheRings.getAuthor(), "Tolkien");
