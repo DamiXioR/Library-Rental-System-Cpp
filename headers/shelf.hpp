@@ -15,7 +15,7 @@ public:
 	bool isShelfEmpty() const {
 		return shelf_.empty();
 	}
-	bool getBooksCount() const {
+	int getBooksCount() const {
 		return shelf_.size();
 	}
 	void putTheBookOnTheShelf(Book newBook) {
@@ -30,6 +30,13 @@ public:
 			foundedFlag = true;
 		}
 		return std::make_pair(foundedFlag,founded);
+	}
+
+	auto removeTheBookFromTheShelfByTitle(std::string title) -> void {
+		auto foundedPair = findTheBookOnTheShelfByTitle(title);
+		if(foundedPair.first){
+			shelf_.erase(foundedPair.second);
+		}
 	}
 };
 

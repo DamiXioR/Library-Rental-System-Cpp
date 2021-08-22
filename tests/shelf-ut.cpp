@@ -52,11 +52,26 @@ TEST_F(TestShelf, MethodFindTheBookOnTheShelfByTitleShouldReturnPairWhereFirstEl
 	shelf.putTheBookOnTheShelf(hobbit);
 	shelf.putTheBookOnTheShelf(diuna);
 	shelf.putTheBookOnTheShelf(hyperion);
-
+	
 	auto foundedPair = shelf.findTheBookOnTheShelfByTitle("Fantasy");
 	EXPECT_FALSE(foundedPair.first);
 	
 	foundedPair = shelf.findTheBookOnTheShelfByTitle("Hyperion");
 	EXPECT_TRUE(foundedPair.first);
+	EXPECT_EQ(foundedPair.second->getTitle(),hyperion.getTitle());
+}
+
+TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByTitleShouldRemoveTheBookSoBooksCountDecreaseAndItsNoMorePossibleToFindBookByTitleWhenIsUnique){
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	shelf.putTheBookOnTheShelf(hobbit);
+	shelf.putTheBookOnTheShelf(diuna);
+	shelf.putTheBookOnTheShelf(hyperion);
+	EXPECT_EQ(shelf.getBooksCount(), 4);
+
+	shelf.removeTheBookFromTheShelfByTitle("Hyperion");
+	EXPECT_EQ(shelf.getBooksCount(), 3);
+
+	auto foundedPair = shelf.findTheBookOnTheShelfByTitle("Hyperion");
+	EXPECT_FALSE(foundedPair.first);
 	EXPECT_EQ(foundedPair.second->getTitle(),hyperion.getTitle());
 }
