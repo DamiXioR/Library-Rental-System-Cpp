@@ -4,14 +4,15 @@
 #include "shelf.hpp"
 #include <string>
 
-TEST(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){
+class TestShelf : public ::testing::Test {
+public:
 	Shelf shelf;
-	
+};
+
+TEST_F(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){
 	EXPECT_TRUE(shelf.isShelfEmpty());
 }
 
-TEST(TestShelf, MethodGetBooksCountShouldReturn0BooksWhenIsInitialized){
-	Shelf shelf;
-	
+TEST_F(TestShelf, MethodGetBooksCountShouldReturn0BooksWhenIsInitialized){
 	EXPECT_EQ(shelf.getBooksCount(), 0);
 }
