@@ -4,11 +4,13 @@ project(Library_Rental_System)
 set (SRC
 src/randomClass.cpp
 src/book.cpp
+src/shelf.cpp
 )
 
 set (TESTS
 tests/randomClass-ut.cpp
 tests/book-ut.cpp
+tests/shelf-ut.cpp
 )
 
 set (COMPILING_FLAGS
