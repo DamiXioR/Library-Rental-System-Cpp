@@ -3,10 +3,12 @@ project(Library_Rental_System)
 
 set (SRC
 src/randomClass.cpp
+src/book.cpp
 )
 
 set (TESTS
 tests/randomClass-ut.cpp
+tests/book-ut.cpp
 )
 
 set (COMPILING_FLAGS
@@ -23,19 +25,14 @@ set (GMOCK_LIBRARIES
 
 include_directories(headers)
 
-#LIBRARIES / CLASS FILES
-add_library(${PROJECT_NAME}-lib ${SRC})
-add_library(${PROJECT_NAME}-libut ${TESTS})
-
 #MAIN
-add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}-lib)
+add_executable(${PROJECT_NAME} main.cpp ${SRC})
 target_compile_options(${PROJECT_NAME} PUBLIC ${COMPILING_FLAGS})
 
 #TEST
-add_executable(${PROJECT_NAME}-ut tests/mainTest.cpp)
-target_link_libraries(${PROJECT_NAME}-ut PRIVATE ${PROJECT_NAME}-lib ${PROJECT_NAME}-libut ${GMOCK_LIBRARIES}) 
-target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
+add_executable(${PROJECT_NAME}-ut tests/mainTest.cpp ${SRC} ${TESTS})
+target_link_libraries(${PROJECT_NAME}-ut PUBLIC ${GMOCK_LIBRARIES}) 
+target_compile_options(${PROJECT_NAME}-ut PUBLIC ${FLAGS})
 add_test(NAME ${PROJECT_NAME}-tests COMMAND ${PROJECT_NAME}-ut)
 
 enable_testing()
