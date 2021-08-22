@@ -10,10 +10,10 @@ class Shelf {
 private:
 	std::vector<Book> shelf_{};
 public:
-	bool isShelfEmpty() {
+	bool isShelfEmpty() const {
 		return shelf_.empty();
 	}
-	bool getBooksCount() {
+	bool getBooksCount() const {
 		return shelf_.size();
 	}
 };
