@@ -16,3 +16,11 @@ TEST_F(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){
 TEST_F(TestShelf, MethodGetBooksCountShouldReturn0BooksWhenIsInitialized){
 	EXPECT_EQ(shelf.getBooksCount(), 0);
 }
+
+TEST_F(TestShelf, MethodPutTheBookOnTheShelfMakesThatShelfIsNoMoreEmptyAlsoIncreaseBooksCountAlso){
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	
+	EXPECT_FALSE(shelf.isShelfEmpty());
+	EXPECT_EQ(shelf.getBooksCount(), 1);
+}

@@ -16,6 +16,9 @@ public:
 	bool getBooksCount() const {
 		return shelf_.size();
 	}
+	void putTheBookOnTheShelf(Book newBook) {
+		shelf_.push_back(newBook);
+	}
 };
 
 #endif
