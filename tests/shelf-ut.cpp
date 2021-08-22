@@ -3,6 +3,7 @@
 
 #include "shelf.hpp"
 #include <string>
+#include <type_traits>
 
 class TestShelf : public ::testing::Test {
 public:
@@ -23,4 +24,21 @@ TEST_F(TestShelf, MethodPutTheBookOnTheShelfMakesThatShelfIsNoMoreEmptyAlsoIncre
 	
 	EXPECT_FALSE(shelf.isShelfEmpty());
 	EXPECT_EQ(shelf.getBooksCount(), 1);
+}
+
+TEST_F(TestShelf, MethodFindTheBookOnTheShelfByTitleShouldReturnPairWhereFirstElementIsFalseWhenBookNotFounded){
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	auto foundedPair = shelf.findTheBookOnTheShelfByTitle("Diuna");
+
+	EXPECT_FALSE(foundedPair.first);
+}
+
+TEST_F(TestShelf, MethodFindTheBookOnTheShelfByTitleShouldReturnPairWhereFirstElementIsTrueWhenBookIsFoundedAndSecondElementIsIteratorToTheBook){
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	auto foundedPair = shelf.findTheBookOnTheShelfByTitle("Lord of the ring");
+	
+	EXPECT_TRUE(foundedPair.first);
+	EXPECT_EQ(foundedPair.second->getTitle(),lordOfTheRings.getTitle());
 }
