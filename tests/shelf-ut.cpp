@@ -42,3 +42,21 @@ TEST_F(TestShelf, MethodFindTheBookOnTheShelfByTitleShouldReturnPairWhereFirstEl
 	EXPECT_TRUE(foundedPair.first);
 	EXPECT_EQ(foundedPair.second->getTitle(),lordOfTheRings.getTitle());
 }
+
+TEST_F(TestShelf, MethodFindTheBookOnTheShelfByTitleShouldReturnPairWhereFirstElementIsTrueWhenBookIsFoundedAndSecondElementIsIteratorToTheBook2){
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
+	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020};
+	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019};
+	Book hyperion = Book {"Simmons", "Hyperion", "Fantasy", 2018};
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	shelf.putTheBookOnTheShelf(hobbit);
+	shelf.putTheBookOnTheShelf(diuna);
+	shelf.putTheBookOnTheShelf(hyperion);
+
+	auto foundedPair = shelf.findTheBookOnTheShelfByTitle("Fantasy");
+	EXPECT_FALSE(foundedPair.first);
+	
+	foundedPair = shelf.findTheBookOnTheShelfByTitle("Hyperion");
+	EXPECT_TRUE(foundedPair.first);
+	EXPECT_EQ(foundedPair.second->getTitle(),hyperion.getTitle());
+}
