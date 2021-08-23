@@ -1,8 +1,8 @@
 #ifndef MAGICBOX
 #define MAGICBOX
 
+#include <limits>
 #include <random>
-#include <string>
 #include <set>
 
 class MagicBox {
@@ -14,8 +14,10 @@ public:
 	}
 
 	std::size_t drawId() {
+		unsigned long long minId {1};
+		unsigned long long maxId {ULLONG_MAX};
 		std::random_device rd;
-		std::uniform_int_distribution<int> dist (1,9);
+		std::uniform_int_distribution<unsigned long long> dist (minId, maxId);
 		bool isUnique{false};
 		unsigned drawedValue{0};
 		while(!isUnique){

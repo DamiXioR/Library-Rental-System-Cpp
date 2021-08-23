@@ -2,6 +2,8 @@
 #include <gmock/gmock.h>
 
 #include "magicBox.hpp"
+#include "magicBoxStub.hpp"
+
 #include <string>
 
 class TestMagicBox : public ::testing::Test {
@@ -9,15 +11,23 @@ public:
 	MagicBox magicBox;
 };
 
+class TestMagicBoxStub : public ::testing::Test {
+public:
+	MagicBoxStub magicBoxStub;
+};
+
 TEST_F(TestMagicBox, MethodGetIdBoxSizeShouldReturn0WhenMagicBoxIsInitialized){
 	EXPECT_EQ(magicBox.getIdBoxSize(), 0);
 }
 
-TEST_F(TestMagicBox, MethodDrawIdShouldDrawNumbersIdWhichIsUniqueInTheSetAndReturnIt){
-	std::set<int> expectedMagicBox {1,2,3,4,5,6,7,8,9};
+TEST_F(TestMagicBoxStub, MethodDrawIdShouldDrawNumbersIdWhichIsUniqueInTheSetAndReturnIt){
+	std::set<int> expectedMagicBox;
+	for(int i{1}; i<101; ++i){
+		expectedMagicBox.insert(i);
+	}
 	std::set<int> workingMagicBox;
-	for(int i{0}; i < 9; ++i){
-		workingMagicBox.insert(magicBox.drawId());
+	for(int i{1}; i < 101; ++i){
+		workingMagicBox.insert(magicBoxStub.drawId());
 	}
 	EXPECT_EQ(expectedMagicBox, workingMagicBox);
 }
