@@ -12,3 +12,7 @@ public:
 TEST_F(TestMagicBox, MethodGetIdBoxSizeShouldReturn0WhenMagicBoxIsInitialized){
 	EXPECT_EQ(magicBox.getIdBoxSize(), 0);
 }
+
+TEST_F(TestMagicBox, MethodDrawIdShouldDrawNumbersIdWhichIsUniqueInTheSetAndReturnIt){
+	EXPECT_EQ(magicBox.drawId(), 1);
+}
