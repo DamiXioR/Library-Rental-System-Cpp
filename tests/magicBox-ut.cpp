@@ -22,11 +22,11 @@ TEST_F(TestMagicBox, MethodGetIdBoxSizeShouldReturn0WhenMagicBoxIsInitialized){
 
 TEST_F(TestMagicBoxStub, MethodDrawIdShouldDrawNumbersIdWhichIsUniqueInTheSetAndReturnIt){
 	std::set<int> expectedMagicBox;
-	for(int i{1}; i<101; ++i){
+	for(int i{1}; i<51; ++i){
 		expectedMagicBox.insert(i);
 	}
 	std::set<int> workingMagicBox;
-	for(int i{1}; i < 101; ++i){
+	for(int i{1}; i < 51; ++i){
 		workingMagicBox.insert(magicBoxStub.drawId());
 	}
 	EXPECT_EQ(expectedMagicBox, workingMagicBox);

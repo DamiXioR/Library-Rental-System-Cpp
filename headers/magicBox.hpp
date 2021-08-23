@@ -7,7 +7,7 @@
 
 class MagicBox {
 private:
-	std::set<unsigned> idBox_{};
+	std::set<unsigned long long> idBox_{};
 public:
 	std::size_t getIdBoxSize() const {
 		return idBox_.size();
