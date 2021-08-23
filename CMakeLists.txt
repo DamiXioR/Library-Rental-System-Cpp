@@ -5,12 +5,14 @@ set (SRC
 src/randomClass.cpp
 src/book.cpp
 src/shelf.cpp
+src/magicBox.cpp
 )
 
 set (TESTS
 tests/randomClass-ut.cpp
 tests/book-ut.cpp
 tests/shelf-ut.cpp
+tests/magicBox-ut.cpp
 )
 
 set (COMPILING_FLAGS
