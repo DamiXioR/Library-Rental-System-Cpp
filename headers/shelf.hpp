@@ -12,32 +12,19 @@ class Shelf {
 private:
 	std::vector<Book> shelf_{};
 public:
-	bool isShelfEmpty() const {
+	auto isShelfEmpty() const -> bool {
 		return shelf_.empty();
 	}
-	int getBooksCount() const {
+	auto getBooksCount() const -> int {
 		return shelf_.size();
 	}
-	void putTheBookOnTheShelf(Book newBook) {
+	auto putTheBookOnTheShelf(Book newBook) -> void {
 		shelf_.push_back(newBook);
 	}
-	auto findTheBookOnTheShelfByTitle(std::string title) -> std::pair<bool,std::vector<Book>::iterator> {
-		auto founded = std::find_if(shelf_.begin(),shelf_.end(),[&title](const auto& everyBook){
-			return (title == everyBook.getTitle());
-		});
-		bool foundedFlag{false};
-		if(founded != shelf_.end()){
-			foundedFlag = true;
-		}
-		return std::make_pair(foundedFlag,founded);
-	}
 
-	auto removeTheBookFromTheShelfByTitle(std::string title) -> void {
-		auto foundedPair = findTheBookOnTheShelfByTitle(title);
-		if(foundedPair.first){
-			shelf_.erase(foundedPair.second);
-		}
-	}
+	auto findTheBookOnTheShelfByTitle(std::string title) -> std::pair<bool,std::vector<Book>::iterator>;
+	auto removeTheBookFromTheShelfByTitle(std::string title) -> void;
+
 };
 
 #endif
