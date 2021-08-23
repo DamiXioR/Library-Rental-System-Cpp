@@ -14,5 +14,10 @@ TEST_F(TestMagicBox, MethodGetIdBoxSizeShouldReturn0WhenMagicBoxIsInitialized){
 }
 
 TEST_F(TestMagicBox, MethodDrawIdShouldDrawNumbersIdWhichIsUniqueInTheSetAndReturnIt){
-	EXPECT_EQ(magicBox.drawId(), 1);
+	std::set<int> expectedMagicBox {1,2,3,4,5,6,7,8,9};
+	std::set<int> workingMagicBox;
+	for(int i{0}; i < 9; ++i){
+		workingMagicBox.insert(magicBox.drawId());
+	}
+	EXPECT_EQ(expectedMagicBox, workingMagicBox);
 }

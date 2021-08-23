@@ -15,7 +15,7 @@ public:
 
 	std::size_t drawId() {
 		std::random_device rd;
-		std::uniform_int_distribution<int> dist (1,1);
+		std::uniform_int_distribution<int> dist (1,9);
 		bool isUnique{false};
 		unsigned drawedValue{0};
 		while(!isUnique){
