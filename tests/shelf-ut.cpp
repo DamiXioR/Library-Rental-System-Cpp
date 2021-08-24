@@ -11,10 +11,15 @@ public:
 	Shelf shelf;
 
 //Books
-	Book lordOfTheRings = Book {"Tolkien", "Lord of the rings", "Fantasy", 2021, 1};
-	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020, 2};
-	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019, 3};
-	Book hyperion = Book {"Simmons", "Hyperion", "Fantasy", 2018, 4};
+	unsigned long long idLordOfTheRings{1};
+	unsigned long long idHobbit{2};
+	unsigned long long idDiuna{3};
+	unsigned long long idHyperion{4};
+	unsigned long long idNonExisted{101};
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the rings", "Fantasy", 2021, idLordOfTheRings};
+	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020, idHobbit};
+	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019, idDiuna};
+	Book hyperion = Book {"Simmons", "Hyperion", "Fantasy", 2018, idHyperion};
 };
 
 TEST_F(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){
@@ -71,10 +76,7 @@ TEST_F(TestShelf, MethodFindTheBookOnTheShelfByIdShouldReturnPairWhereFirstEleme
 	shelf.putTheBookOnTheShelf(diuna);
 	shelf.putTheBookOnTheShelf(hyperion);
 	
-	auto foundedPair = shelf.findTheBookOnTheShelfById(100);
-	EXPECT_FALSE(foundedPair.first);
-	
-	foundedPair = shelf.findTheBookOnTheShelfById(2);
+	auto foundedPair = shelf.findTheBookOnTheShelfById(idHobbit);
 	EXPECT_TRUE(foundedPair.first);
 	EXPECT_EQ(foundedPair.second->getTitle(),hobbit.getTitle());
 }
@@ -86,10 +88,10 @@ TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByIdShouldRemoveTheBookSoBooksC
 	shelf.putTheBookOnTheShelf(hyperion);
 	EXPECT_EQ(shelf.getBooksCount(), 4);
 
-	shelf.removeTheBookFromTheShelfById(3);
+	shelf.removeTheBookFromTheShelfById(idLordOfTheRings);
 	EXPECT_EQ(shelf.getBooksCount(), 3);
 
-	auto foundedPair = shelf.findTheBookOnTheShelfById(3);
+	auto foundedPair = shelf.findTheBookOnTheShelfById(idLordOfTheRings);
 	EXPECT_FALSE(foundedPair.first);
 }
 
@@ -101,7 +103,7 @@ TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByIdShouldRemoveTheBookIfExists
 	shelf.putTheBookOnTheShelf(hyperion);
 	EXPECT_EQ(shelf.getBooksCount(), 4);
 	
-	shelf.removeTheBookFromTheShelfById(100);
+	shelf.removeTheBookFromTheShelfById(idNonExisted);
 	EXPECT_EQ(shelf.getBooksCount(), 4);
 }
 
@@ -111,10 +113,10 @@ TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByIdShouldRemoveTheBookSoWhenAl
 	shelf.putTheBookOnTheShelf(diuna);
 	shelf.putTheBookOnTheShelf(hyperion);
 	
-	shelf.removeTheBookFromTheShelfById(1);
-	shelf.removeTheBookFromTheShelfById(2);
-	shelf.removeTheBookFromTheShelfById(3);
-	shelf.removeTheBookFromTheShelfById(4);
+	shelf.removeTheBookFromTheShelfById(idLordOfTheRings);
+	shelf.removeTheBookFromTheShelfById(idHobbit);
+	shelf.removeTheBookFromTheShelfById(idDiuna);
+	shelf.removeTheBookFromTheShelfById(idHyperion);
 
 	EXPECT_TRUE(shelf.isShelfEmpty());	
 }
