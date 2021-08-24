@@ -12,7 +12,7 @@ private:
 	unsigned long long uniqueId_{};
 
 public:
-	Book(std::string author, std::string title, std::string kind, short date, unsigned long long uniqueId = 0);
+	Book(std::string author, std::string title, std::string kind, short date, unsigned long long uniqueId);
 
 	auto getAuthor() const -> std::string {
 		return author_;

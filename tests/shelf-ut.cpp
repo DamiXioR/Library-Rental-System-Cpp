@@ -11,10 +11,10 @@ public:
 	Shelf shelf;
 
 //Books
-	Book lordOfTheRings = Book {"Tolkien", "Lord of the rings", "Fantasy", 2021};
-	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020};
-	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019};
-	Book hyperion = Book {"Simmons", "Hyperion", "Fantasy", 2018};
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the rings", "Fantasy", 2021, 1};
+	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020, 2};
+	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019, 3};
+	Book hyperion = Book {"Simmons", "Hyperion", "Fantasy", 2018, 4};
 };
 
 TEST_F(TestShelf, MethodGetShelfShouldReturnEmptyShelfWhenIsInitialized){

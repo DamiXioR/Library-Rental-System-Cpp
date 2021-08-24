@@ -5,7 +5,7 @@
 #include <string>
 
 TEST(TestBook, GettersShouldReturnsBooksAuthorTitleKindDate){
-	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021};
+	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021, 1};
 
 	EXPECT_EQ(lordOfTheRings.getAuthor(), "Tolkien");
 	EXPECT_EQ(lordOfTheRings.getTitle(), "Lord of the ring");
