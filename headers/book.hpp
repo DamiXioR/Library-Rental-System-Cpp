@@ -9,19 +9,21 @@ private:
 	std::string title_{};
 	std::string kind_{};
 	short date_{};
-public:
-	Book(std::string author, std::string title, std::string kind, short date);
+	unsigned long long uniqueId_{};
 
-	std::string getAuthor() const {
+public:
+	Book(std::string author, std::string title, std::string kind, short date, unsigned long long uniqueId = 0);
+
+	auto getAuthor() const -> std::string {
 		return author_;
 	}
-	std::string getTitle() const {
+	auto getTitle() const -> std::string {
 		return title_;
 	}
-	std::string getKind() const {
+	auto getKind() const -> std::string {
 		return kind_;
 	}
-	short getDate() const {
+	auto getDate() const -> short {
 		return date_;
 	}
 
