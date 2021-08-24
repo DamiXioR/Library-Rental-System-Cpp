@@ -25,7 +25,6 @@ public:
 	auto findTheBookOnTheShelfByTitle(std::string title) -> std::pair<bool,std::vector<Book>::iterator>;
 	auto findTheBookOnTheShelfById(unsigned long long id) -> std::pair<bool,std::vector<Book>::iterator>;
 	auto removeTheBookFromTheShelfByTitle(std::string title) -> void;
-
 };
 
 #endif
