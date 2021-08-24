@@ -11,4 +11,5 @@ TEST(TestBook, GettersShouldReturnsBooksAuthorTitleKindDate){
 	EXPECT_EQ(lordOfTheRings.getTitle(), "Lord of the ring");
 	EXPECT_EQ(lordOfTheRings.getKind(), "Fantasy");
 	EXPECT_EQ(lordOfTheRings.getDate(), 2021);
+	EXPECT_EQ(lordOfTheRings.getId(), 1);
 }

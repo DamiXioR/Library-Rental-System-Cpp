@@ -26,6 +26,10 @@ public:
 	auto getDate() const -> short {
 		return date_;
 	}
+	auto getId() const -> unsigned long long {
+		return uniqueId_;
+	}
+
 
 };
 
