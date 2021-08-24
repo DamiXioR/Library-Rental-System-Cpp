@@ -7,7 +7,7 @@
 
 class TestShelf : public ::testing::Test {
 public:
-//Shelves+
+//Shelf
 	Shelf shelf;
 
 //Books
@@ -16,6 +16,7 @@ public:
 	unsigned long long idDiuna{3};
 	unsigned long long idHyperion{4};
 	unsigned long long idNonExisted{101};
+	
 	Book lordOfTheRings = Book {"Tolkien", "Lord of the rings", "Fantasy", 2021, idLordOfTheRings};
 	Book hobbit = Book {"Tolkien", "Hobbit", "Fantasy", 2020, idHobbit};
 	Book diuna = Book {"Herbert", "Diuna", "Fantasy", 2019, idDiuna};
