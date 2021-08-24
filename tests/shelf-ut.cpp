@@ -104,3 +104,17 @@ TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByTitleShouldRemoveTheBookSoWhe
 
 	EXPECT_TRUE(shelf.isShelfEmpty());	
 }
+
+TEST_F(TestShelf, MethodFindTheBookOnTheShelfByIdShouldReturnPairWhereFirstElementIsTrueWhenBookIsFoundedAndSecondElementIsIteratorToTheBook){
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	shelf.putTheBookOnTheShelf(hobbit);
+	shelf.putTheBookOnTheShelf(diuna);
+	shelf.putTheBookOnTheShelf(hyperion);
+	
+	auto foundedPair = shelf.findTheBookOnTheShelfById(100);
+	EXPECT_FALSE(foundedPair.first);
+	
+	foundedPair = shelf.findTheBookOnTheShelfById(2);
+	EXPECT_TRUE(foundedPair.first);
+	EXPECT_EQ(foundedPair.second->getTitle(),hobbit.getTitle());
+}
