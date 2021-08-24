@@ -22,8 +22,8 @@ auto Shelf::findTheBookOnTheShelfById(unsigned long long id) -> std::pair<bool,s
 	return std::make_pair(foundedFlag,founded);
 }
 
-auto Shelf::removeTheBookFromTheShelfByTitle(std::string title) -> void {
-	auto foundedPair = findTheBookOnTheShelfByTitle(title);
+auto Shelf::removeTheBookFromTheShelfById(unsigned long long id) -> void {
+	auto foundedPair = findTheBookOnTheShelfById(id);
 	if(foundedPair.first){
 		shelf_.erase(foundedPair.second);
 	}
