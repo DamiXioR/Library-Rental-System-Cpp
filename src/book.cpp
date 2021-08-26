@@ -11,3 +11,9 @@ Book::Book( std::string author,
             date_(date),
             uniqueId_(uniqueId)
 {};
+
+ auto Book::getStringStreamOfBooksData() const -> std::stringstream {
+	std::stringstream ss;
+	ss << "Title: " << getTitle() << " Kind: " << getKind() << " Date: " << getDate() << " ID: " << getId();
+	return ss;
+}

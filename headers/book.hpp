@@ -1,7 +1,9 @@
 #ifndef BOOK
 #define BOOK
 
+#include <sstream>
 #include <string>
+#include <utility>
 
 class Book {
 private:
@@ -30,7 +32,7 @@ public:
 		return uniqueId_;
 	}
 
-
+	auto getStringStreamOfBooksData() const -> std::stringstream;
 };
 
 #endif
