@@ -121,3 +121,17 @@ TEST_F(TestShelf, MethodRemoveTheBookFromTheShelfByIdShouldRemoveTheBookSoWhenAl
 
 	EXPECT_TRUE(shelf.isShelfEmpty());	
 }
+
+TEST_F(TestShelf, MethodGetStringStreamWithAllBooksOnTheShelfShoudReturnSStreamWithLoadedBooksData){
+	shelf.putTheBookOnTheShelf(lordOfTheRings);
+	shelf.putTheBookOnTheShelf(diuna);
+	shelf.putTheBookOnTheShelf(hyperion);
+	auto loadedStringStream = shelf.getStringStreamWithAllBooksOntTheShelf();
+
+	std::stringstream expectedStringStream; 
+	expectedStringStream << "Title: " << "Lord of the rings" << " Kind: " << "Fantasy" << " Date: " << 2021 << " ID: " << idLordOfTheRings;
+	expectedStringStream << "Title: " << "Diuna" << " Kind: " << "Fantasy" << " Date: " << 2019 << " ID: " << idDiuna;
+	expectedStringStream << "Title: " << "Hyperion" << " Kind: " << "Fantasy" << " Date: " << 2018 << " ID: " << idHyperion;
+
+	EXPECT_EQ(expectedStringStream.str(), loadedStringStream.str());		
+}

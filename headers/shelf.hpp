@@ -5,6 +5,8 @@
 
 #include <algorithm>
 #include <string>
+#include <iostream>
+#include <sstream>
 #include <utility>
 #include <vector>
 
@@ -24,8 +26,14 @@ public:
 
 	auto findTheBookOnTheShelfByTitle(std::string title) -> std::pair<bool,std::vector<Book>::iterator>;
 	auto findTheBookOnTheShelfById(unsigned long long id) -> std::pair<bool,std::vector<Book>::iterator>;
-	auto removeTheBookFromTheShelfByTitle(std::string title) -> void;
 	auto removeTheBookFromTheShelfById(unsigned long long id) -> void;
+	auto getStringStreamWithAllBooksOntTheShelf() const -> std::stringstream {
+		std::stringstream ss;
+		for(const auto& book : shelf_){
+			ss << book.getStringStreamOfBooksData().str();
+		}
+		return ss;
+	}
 };
 
 #endif
