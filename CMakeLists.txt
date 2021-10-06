@@ -6,6 +6,7 @@ src/randomClass.cpp
 src/book.cpp
 src/shelf.cpp
 src/magicBox.cpp
+src/fileManager.cpp
 )
 
 set (TESTS
@@ -13,6 +14,7 @@ tests/randomClass-ut.cpp
 tests/book-ut.cpp
 tests/shelf-ut.cpp
 tests/magicBox-ut.cpp
+tests/fileManager-ut.cpp
 )
 
 set (COMPILING_FLAGS
