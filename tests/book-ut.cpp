@@ -18,7 +18,7 @@ TEST(TestBook, MethodGetStringStreamOfBooksDataShoudReturnSStreamWithLoadedWithB
 	Book lordOfTheRings = Book {"Tolkien", "Lord of the ring", "Fantasy", 2021, 1};
 
 	std::stringstream expectedStringStream; 
-	expectedStringStream << "Title: " << "Lord of the ring" << " Kind: " << "Fantasy" << " Date: " << 2021 << " ID: " << 1;
+	expectedStringStream << "Title: " << "Lord of the ring" << " Kind: " << "Fantasy" << " Date: " << 2021 << " ID: " << 1 << ";";
 
 	EXPECT_EQ(expectedStringStream.str(), lordOfTheRings.getStringStreamOfBooksData().str());	
 }
